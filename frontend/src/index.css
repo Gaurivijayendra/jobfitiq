@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --color-bg: 242 244 245;
+  --color-surface: 255 255 255;
+  --color-ink: 22 26 33;
+  --color-hairline: 225 228 232;
+  --color-accent: 53 87 122;
+  --color-match: 47 143 110;
+  --color-gap: 184 134 63;
+  /* Always dark, unlike --color-ink which flips light in dark mode: shadows
+     need to stay dark in both themes or they read as a glow instead of depth. */
+  --color-shadow: 22 26 33;
+}
+
+.dark {
+  color-scheme: dark;
+  --color-bg: 20 22 27;
+  --color-surface: 27 30 37;
+  --color-ink: 231 233 236;
+  --color-hairline: 44 48 58;
+  --color-accent: 108 147 184;
+  --color-match: 76 174 139;
+  --color-gap: 210 161 92;
+  --color-shadow: 0 0 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(var(--color-bg));
+  transition: background-color 0.2s ease;
+}
+
+::selection {
+  background-color: rgb(var(--color-accent) / 0.25);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
